@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.dev.config.js",
     "build": "webpack --config webpack.config.js",
+    "speed": "webpack --config webpack.dll.app.js",
     "dist": "./scripts/dist.sh"
   },
   "repository": {
