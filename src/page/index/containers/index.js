@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Footer from '../../../components/Footer';
-import Header from '../../../components/Header';
-import Logo from '../../../components/Logo';
+import Footer from 'components/Footer';
+import Header from 'components/Header';
+import Logo from 'components/Logo';
+import Icon from 'assets/icon.png';
 
 export default class App extends Component {
     render() {
@@ -10,6 +11,7 @@ export default class App extends Component {
                 <Header />
                 <Logo />
                 <Footer />
+                <img src={Icon} alt=""/>
             </div>
         );
     }
