@@ -1,8 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 const HappyPackPlugin = require('./happypack.config');
+const vendorDllManifest = require('./dll/vendor.manifest.json');
+const vendorDllConfig = require('./dll/vendor.config.json');
 
 
 module.exports = {
@@ -11,7 +13,7 @@ module.exports = {
     },
 
     output: {
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'assets/js/[name].[chunkhash:8].js',
         chunkFilename: 'assets/js/[name].[chunkhash:8].chunk.js'
     },
@@ -85,13 +87,21 @@ module.exports = {
     },
 
     plugins: [
-        new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             title: 'App',
             chunks: ['app'],
             template: path.resolve(__dirname, './public/layout.ejs'),
-            filename: 'index.html'
+            filename: 'index.html',
+            //bundleName: vendorDllConfig.vendor.js
         }),
-        new webpack.HashedModuleIdsPlugin()
+        new HtmlIncludeAssetsPlugin({
+            assets: [vendorDllConfig.vendor.js], // 添加的资源相对html的路径
+            append: false // false 在其他资源的之前添加 true 在其他资源之后添加
+        }),
+        new webpack.HashedModuleIdsPlugin(),
+        // 当我们需要使用动态链接库时 首先会找到manifest文件 得到name值记录的全局变量名称 然后找到动态链接库文件 进行加载
+        new webpack.DllReferencePlugin({
+            manifest: vendorDllManifest
+        })
     ].concat(HappyPackPlugin)
 };

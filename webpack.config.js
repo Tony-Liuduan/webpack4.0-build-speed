@@ -83,6 +83,19 @@ module.exports = {
         ]
     },
 
+    resolve: {
+        modules: [ // 优化模块查找路径
+            path.resolve(__dirname, 'src'),
+            path.resolve(__dirname, 'node_modules') // 指定node_modules所在位置 当你import 第三方模块时 直接从这个路径下搜索寻找
+        ],
+        alias: {
+            assets: path.resolve(__dirname, 'src/assets/'),
+            components: path.resolve(__dirname, 'src/components/'),
+            style: path.resolve(__dirname, 'src/style/')
+        },
+        extensions: ['.js', '.jsx']
+    },
+
     plugins: [
         new CleanWebpackPlugin(['build']),
         new HtmlWebpackPlugin({

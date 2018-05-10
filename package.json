@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.dev.config.js",
     "build": "webpack --config webpack.config.js",
-    "speed": "webpack --config webpack.dll.app.js",
+    "app": "webpack --config webpack.dll.app.js",
+    "dll": "webpack --config webpack.dll.vendor.js --mode production",
     "dist": "./scripts/dist.sh"
   },
   "repository": {
@@ -29,6 +30,7 @@
   },
   "homepage": "https://github.com/Tony-Liuduan/webpack4.0-build-speed#readme",
   "devDependencies": {
+    "assets-webpack-plugin": "^3.5.1",
     "autoprefixer": "^8.3.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
@@ -39,6 +41,7 @@
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^3.0.2",
     "happypack": "^5.0.0",
+    "html-webpack-include-assets-plugin": "^1.0.4",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.8.3",
     "postcss-flexbugs-fixes": "^3.3.0",

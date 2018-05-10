@@ -9,7 +9,9 @@
 
 <body>
     <div id="root"></div>
+    <% if (htmlWebpackPlugin.options.bundleName) { %>
     <script type="text/javascript" src="<%= htmlWebpackPlugin.options.bundleName %>"></script>
+    <% } %>
 </body>
 
 </html>

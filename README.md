@@ -13,18 +13,33 @@ cnpm i
 npm start
 ```
 
+## Dll
+Output DLL
+```bash
+npm run dll 
+```
+
+Output App associated dll
+
+```bash
+npm run app
+```
+
 ## Build
 
 By default, `npm run build` will build without plugins.
+```bash
+npm run build
+```
 
-If you want to build with Happypack and DllPlugin, just pass a `dll` param:
+If you want to build with Happypack and DllPlugin
 
 ``` bash
-npm run build dll
+npm run dist
 ```
 
 If you are told you haven't permissions to execute the script, run the code below:
 
 ``` bash
-$ chmod +x ./script/build.sh
+$ chmod +x ./script/dist.sh
 ```
