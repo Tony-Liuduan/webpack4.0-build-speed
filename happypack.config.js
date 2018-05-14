@@ -1,8 +1,19 @@
 const HappyPack = require('happypack');
 const os = require('os');
 
+
 // 根据我的系统的内核数量 指定线程池个数 也可以其他数量
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
+const isDev = process.env.NODE_ENV !== 'production';
+const cssLoaders = [
+    'style-loader',
+    'css-loader',
+    {
+        loader: 'postcss-loader',
+        options: { sourceMap: true, config: { path: 'postcss.config.js' } }
+    }
+];
+//if (!isDev) cssLoaders.shift();
 module.exports = [
     new HappyPack({ // 基础参数设置
         id: 'babel',
@@ -12,26 +23,11 @@ module.exports = [
     new HappyPack({
         id: 'css',
         threadPool: happyThreadPool,
-        loaders: [
-            'style-loader',
-            'css-loader',
-            {
-                loader: 'postcss-loader',
-                options: { sourceMap: true, config: { path: 'postcss.config.js' } }
-            }
-        ]
+        loaders: cssLoaders
     }),    
     new HappyPack({
         id: 'scss',
         threadPool: happyThreadPool,
-        loaders: [
-            'style-loader',
-            'css-loader',
-            {
-                loader: 'postcss-loader',
-                options: { sourceMap: true, config: { path: 'postcss.config.js' } }
-            },
-            'sass-loader'
-        ]
+        loaders: cssLoaders.concat('sass-loader')
     })
 ]

@@ -14,15 +14,9 @@ npm start
 ```
 
 ## Dll
-Output DLL
+Output vendor
 ```bash
-npm run dll 
-```
-
-Output App associated dll
-
-```bash
-npm run app
+npm run vendor
 ```
 
 ## Build
@@ -35,7 +29,19 @@ npm run build
 If you want to build with Happypack and DllPlugin
 
 ``` bash
-npm run dist
+npm run dll happy
+```
+
+If you want to build only with DllPlugin
+
+``` bash
+npm run dll
+```
+
+If you want to build only with Happypack
+
+``` bash
+npm run happy
 ```
 
 If you are told you haven't permissions to execute the script, run the code below:
