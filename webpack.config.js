@@ -38,7 +38,7 @@ module.exports = {
                 use: [
                     //'style-loader',
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    'fast-css-loader',
                     {
                         loader: 'postcss-loader',
                         options: { sourceMap: true, config: { path: 'postcss.config.js' } }
@@ -52,12 +52,12 @@ module.exports = {
                 use: [
                     //'style-loader',
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    'fast-css-loader',
                     {
                         loader: 'postcss-loader',
                         options: { sourceMap: true, config: { path: 'postcss.config.js' } }
                     },
-                    'sass-loader'
+                    'fast-sass-loader'
                 ]
             },
             {

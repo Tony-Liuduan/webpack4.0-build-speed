@@ -36,7 +36,7 @@ module.exports = {
                 exclude: /node_modules/,
                 include: path.resolve(__dirname, 'src'),
                 use: [
-                    //MiniCssExtractPlugin.loader,
+                    MiniCssExtractPlugin.loader,
                     'happypack/loader?id=css'
                 ]
             },
@@ -45,7 +45,7 @@ module.exports = {
                 exclude: /node_modules/,
                 include: path.resolve(__dirname, 'src'),
                 use: [
-                    //MiniCssExtractPlugin.loader,
+                    MiniCssExtractPlugin.loader,
                     'happypack/loader?id=scss'
                 ]
             },

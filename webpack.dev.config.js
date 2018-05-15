@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
-const HappyPackPlugin = require('./happypack.config');
 const vendorDllManifest = require('./dll/vendor.manifest.json');
 const vendorDllConfig = require('./dll/vendor.config.json');
 
@@ -26,19 +25,36 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 include: path.resolve(__dirname, 'src'),
-                use: ['happypack/loader?id=babel']
+                use: [
+                    'babel-loader?cacheDirectory'
+                ]
             },
             {
                 test: /\.css$/,
                 exclude: /node_modules/,
                 include: path.resolve(__dirname, 'src'),
-                use: ['happypack/loader?id=css']
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: { sourceMap: false, config: { path: 'postcss.config.js' } }
+                    }
+                ]
             },
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
                 include: path.resolve(__dirname, 'src'),
-                use: ['happypack/loader?id=scss']
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: { sourceMap: false, config: { path: 'postcss.config.js' } }
+                    },
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.(png|svg|jpe?g|gif)$/,
@@ -68,11 +84,7 @@ module.exports = {
                     }
                 ]
             }
-        ],
-        // 忽略对jquery lodash的进行递归解析
-        noParse: function (content) {
-            return /jquery|lodash/.test(content)
-        }
+        ]
     },
 
     resolve: {
@@ -104,10 +116,10 @@ module.exports = {
         new webpack.DllReferencePlugin({
             manifest: vendorDllManifest
         })
-    ].concat(HappyPackPlugin),
+    ],
 
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist-dll'),
+        contentBase: path.resolve(__dirname, 'dll'),
         compress: true, // 开启Gzip压缩
         port: 9000,
         inline: true // 自动刷新
