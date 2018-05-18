@@ -22,7 +22,7 @@ export default class App extends Component {
             import(/* webpackChunkName: "footer" */ 'components/Footer').then(FooterComponent => {
                 this.setState({ FooterComponent: FooterComponent.default });
             });
-        }, 2000);
+        }, 5000);
     }
 
     handleAddRow = () => {

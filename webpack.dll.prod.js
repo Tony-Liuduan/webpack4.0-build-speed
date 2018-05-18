@@ -132,7 +132,7 @@ module.exports = {
             filename: 'assets/css/[name].[contenthash:8].css'
         }),
         // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh|en/), 语言支持过滤
-        /* new ParallelUglifyPlugin({
+        new ParallelUglifyPlugin({
             exclude: path.resolve(__dirname, 'node_modules'),
             include: path.resolve(__dirname, 'src'),
             workerCount: os.cpus().length,
@@ -149,7 +149,7 @@ module.exports = {
                     reduce_vars: true // 提取出出现多次但是没有定义成变量去引用的静态值
                 }
             }
-        }), */
+        }),
         /* new webpack.ProvidePlugin({ // 全局加载jquery
             $: "jquery",
             jQuery: "jquery"

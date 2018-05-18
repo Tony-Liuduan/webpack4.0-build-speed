@@ -1,14 +1,18 @@
 import React from 'react';
-import Button from '../Button';
+//import Button from 'components/Button';
+import AsyncLoad from 'components/AsyncLoad';
 import './index.scss';
 
+
+const Button = AsyncLoad(import(/* webpackChunkName: "button" */ 'components/Button'));
 class TableRow extends React.PureComponent {
-    
     render() {
-        return React.createElement('tr', { className: 'row' },
-            React.createElement('td', { className: 'cell' }, this.props.title),
-            React.createElement('td', { className: 'cell' }, React.createElement(Button)),
-        );
+        return  <tr className='row'>
+            <td className='cell'>{this.props.title}</td>
+            <td className='cell'>
+                <Button/>
+            </td>
+        </tr>
     }
 };
 

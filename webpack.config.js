@@ -36,8 +36,8 @@ module.exports = {
                 exclude: /node_modules/,
                 include: path.resolve(__dirname, 'src'),
                 use: [
-                    //'style-loader',
-                    MiniCssExtractPlugin.loader,
+                    'style-loader',
+                    //MiniCssExtractPlugin.loader,
                     'fast-css-loader',
                     {
                         loader: 'postcss-loader',
@@ -50,8 +50,8 @@ module.exports = {
                 exclude: /node_modules/,
                 include: path.resolve(__dirname, 'src'),
                 use: [
-                    //'style-loader',
-                    MiniCssExtractPlugin.loader,
+                    'style-loader',
+                    //MiniCssExtractPlugin.loader,
                     'fast-css-loader',
                     {
                         loader: 'postcss-loader',
