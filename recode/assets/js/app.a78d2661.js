@@ -11,9 +11,9 @@
         // 检测chunk模块是否已经加载, 0-已加载 undefined-未加载 promise-正在加载 null-预加载
         for (; i < chunkIds.length; i++) {
             chunkId = chunkIds[i]; // 2 **** 0
-            if (installedChunks[chunkId]) { 
+            if (installedChunks[chunkId]) {
                 resolves.push(installedChunks[chunkId][0]);
-            } 
+            }
             installedChunks[chunkId] = 0;
         }
 
@@ -116,7 +116,7 @@
                     installedChunkData = installedChunks[chunkId] = [resolve, reject];
                 });
                 promises.push(installedChunkData[2] = promise);
-                
+
                 // start chunk loading
                 var head = document.getElementsByTagName('head')[0];
                 var script = document.createElement('script');
@@ -264,12 +264,12 @@
             (function (module, __webpack_exports__, __webpack_require__) {
 
                 "use strict";
+                // 标记该模块按ES6导出
                 __webpack_require__.r(__webpack_exports__);
 
                 // EXTERNAL MODULE: ./node_modules/_react@16.3.2@react/index.js
                 var _react_16_3_2_react = __webpack_require__("EHUi");
                 var _react_16_3_2_react_default = /*#__PURE__*/__webpack_require__.n(_react_16_3_2_react);
-
                 // EXTERNAL MODULE: ./node_modules/_react-dom@16.3.2@react-dom/index.js
                 var _react_dom_16_3_2_react_dom = __webpack_require__("2IUh");
                 var _react_dom_16_3_2_react_dom_default = /*#__PURE__*/__webpack_require__.n(_react_dom_16_3_2_react_dom);
@@ -278,9 +278,28 @@
                 var components_Header = __webpack_require__("e5BI");
 
                 // CONCATENATED MODULE: ./src/components/Header/index.js
-                var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+                var _createClass = function () {
+                    function defineProperties(target, props) {
+                        for (var i = 0; i < props.length; i++) {
+                            descriptor = props[i];
+                            descriptor.enumerable = descriptor.enumerable || false;
+                            descriptor.configurable = true;
+                            if ("value" in descriptor) descriptor.writable = true;
+                            Object.defineProperty(target, descriptor.key, descriptor);
+                        }
+                    }
+                    return function (Constructor, protoProps, staticProps) {
+                        if (protoProps) defineProperties(Constructor.prototype, protoProps);
+                        if (staticProps) defineProperties(Constructor, staticProps);
+                        return Constructor;
+                    };
+                }();
 
-                function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+                function _classCallCheck(instance, Constructor) {
+                    if (!(instance instanceof Constructor)) {
+                        throw new TypeError("Cannot call a class as a function");
+                    }
+                }
 
                 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
