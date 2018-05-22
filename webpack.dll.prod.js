@@ -95,7 +95,8 @@ module.exports = {
     resolve: {
         modules: [ // 优化模块查找路径
             path.resolve(__dirname, 'src'),
-            path.resolve(__dirname, 'node_modules') // 指定node_modules所在位置 当你import 第三方模块时 直接从这个路径下搜索寻找
+            // 指定node_modules所在位置 当你import 第三方模块时 直接从这个路径下搜索寻找
+            path.resolve(__dirname, 'node_modules') 
         ],
         alias: {
             assets: path.resolve(__dirname, 'src/assets/'),
@@ -103,7 +104,8 @@ module.exports = {
             style: path.resolve(__dirname, 'src/style/')
         },
         extensions: ['.js', '.jsx'],
-        // 考虑到 Scope Hoisting 依赖源码需采用 ES6 模块化语法，还需要配置 mainFields。因为大部分 Npm 中的第三方库采用了 CommonJS 语法，但部分库会同时提供 ES6 模块化的代码，为了充分发挥 Scope Hoisting 的作用，需要增加以下配置
+        // 考虑到 Scope Hoisting 依赖源码需采用 ES6 模块化语法，还需要配置 mainFields。
+        // 因为大部分 Npm 中的第三方库采用了 CommonJS 语法，但部分库会同时提供 ES6 模块化的代码，为了充分发挥 Scope Hoisting 的作用，需要增加以下配置
         // 针对 Npm 中的第三方模块优先采用 jsnext:main 中指向的 ES6 模块化语法的文件
         mainFields: ['jsnext:main', 'browser', 'main']
     },

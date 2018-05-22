@@ -12,6 +12,7 @@ module.exports = {
     devtool: 'source-map',
     entry: {
         app: ['./src/page/index'],
+        user: ['./src/page/user'],
         vendor: ['react', 'react-dom'],
     },
 
@@ -111,6 +112,12 @@ module.exports = {
             chunks: [/* 'runtime',  */'vendor', 'common', 'app'],
             template: path.resolve(__dirname, './public/layout.ejs'),
             filename: 'index.html'
+        }),
+        new HtmlWebpackPlugin({
+            title: 'User',
+            chunks: [/* 'runtime',  */'vendor', 'common', 'user'],
+            template: path.resolve(__dirname, './public/layout.ejs'),
+            filename: 'user.html'
         }),
         new webpack.HashedModuleIdsPlugin(),
         // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh|en/), 语言支持过滤
